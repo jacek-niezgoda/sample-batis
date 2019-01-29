@@ -14,8 +14,13 @@ public class StudentFactory {
         return Student
                 .builder()
                 .studentId(entity.getStudentId())
-                .firstName(entity.getFirstName())
-                .lastName(entity.getLastName())
+                .studentPayload(
+                        StudentPayload
+                                .builder()
+                                .firstName(entity.getFirstName())
+                                .lastName(entity.getLastName())
+                                .build()
+                )
                 .build();
     }
 
@@ -27,8 +32,8 @@ public class StudentFactory {
         StudentEntity studentEntity = new StudentEntity();
 
         studentEntity.setStudentId(student.studentId());
-        studentEntity.setFirstName(student.firstName());
-        studentEntity.setLastName(student.lastName());
+        studentEntity.setFirstName(student.studentPayload().firstName());
+        studentEntity.setLastName(student.studentPayload().lastName());
 
         return studentEntity;
     }

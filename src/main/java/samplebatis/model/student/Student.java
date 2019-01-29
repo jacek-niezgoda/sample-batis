@@ -3,6 +3,7 @@ package samplebatis.model.student;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
@@ -14,8 +15,8 @@ import org.immutables.value.Value;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public interface Student {
     Long studentId();
-    String firstName();
-    String lastName();
+    @JsonUnwrapped
+    StudentPayload studentPayload();
 
     static ImmutableStudent.Builder builder() {
         return ImmutableStudent.builder();
