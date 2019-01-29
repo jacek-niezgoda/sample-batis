@@ -1,1 +1,1 @@
-This sample project for practising iBatis
+This is a sample project for practising iBatis

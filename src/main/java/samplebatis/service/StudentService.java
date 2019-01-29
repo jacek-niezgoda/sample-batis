@@ -42,8 +42,8 @@ public class StudentService {
         studentDao.delete(studentId);
     }
 
-    public List<Student> students() {
-        return studentDao.all()
+    public List<Student> list() {
+        return studentDao.list()
                 .stream()
                 .map(studentFactory::studentOf)
                 .collect(Collectors.toList());

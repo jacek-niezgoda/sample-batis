@@ -43,8 +43,8 @@ public class StudentController {
     }
 
     @GetMapping
-    public StudentsPayload customers() {
-        return new StudentsPayload(studentService.students());
+    public StudentsPayload list() {
+        return new StudentsPayload(studentService.list());
     }
 
 }

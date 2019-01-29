@@ -34,7 +34,7 @@
         where student_id = #studentId#
     </delete>
 
-    <select id="all" resultClass="samplebatis.entity.StudentEntity" resultMap="student">
+    <select id="list" resultClass="samplebatis.entity.StudentEntity" resultMap="student">
         SELECT * FROM students
     </select>
 

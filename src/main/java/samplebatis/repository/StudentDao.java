@@ -29,7 +29,7 @@ public class StudentDao {
         return sqlMapClientTemplate.delete("Student.delete", studentId);
     }
 
-    public List<StudentEntity> all() {
-        return sqlMapClientTemplate.queryForList("Student.all");
+    public List<StudentEntity> list() {
+        return sqlMapClientTemplate.queryForList("Student.list");
     }
 }

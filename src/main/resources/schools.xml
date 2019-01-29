@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="School">
+    <!-- Using ResultMap -->
+    <resultMap id="school" class="samplebatis.entity.SchoolEntity">
+        <result property="id" column="school_id"/>
+        <result property="name" column="school_name"/>
+        <result property="level" column="school_level"/>
+    </resultMap>
+
+    <insert id="create" parameterClass="samplebatis.entity.SchoolEntity">
+        insert into schools(school_id, school_name, school_level)
+        values (#id#, #name#, #level#)
+
+        <selectKey resultClass="java.lang.Long" keyProperty="id">
+            select last_insert_id() as school_id
+        </selectKey>
+    </insert>
+
+    <select id="read" resultClass="samplebatis.entity.SchoolEntity" resultMap="school">
+        SELECT * FROM schools WHERE school_id = #id#
+    </select>
+
+    <update id="update" parameterClass="samplebatis.entity.SchoolEntity">
+        update schools set
+          school_name = #name#,
+          school_level =  #level#
+        where school_id = #id#
+    </update>
+
+    <delete id="delete" parameterClass="java.lang.Long">
+        delete from schools
+        where school_id = #id#
+    </delete>
+
+    <select id="list" resultClass="samplebatis.entity.SchoolEntity" resultMap="school">
+        SELECT * FROM schools
+    </select>
+
+</sqlMap>

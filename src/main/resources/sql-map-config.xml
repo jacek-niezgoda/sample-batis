@@ -16,4 +16,5 @@
     </transactionManager>
 
     <sqlMap resource="students.xml"/>
+    <sqlMap resource="schools.xml"/>
 </sqlMapConfig>
