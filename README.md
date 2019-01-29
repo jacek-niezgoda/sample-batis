@@ -1,0 +1,1 @@
+This sample project for practising iBatis
