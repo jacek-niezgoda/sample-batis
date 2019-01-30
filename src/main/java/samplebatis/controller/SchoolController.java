@@ -3,11 +3,9 @@ package samplebatis.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import samplebatis.model.school.School;
+import samplebatis.model.school.SchoolFilter;
 import samplebatis.model.school.SchoolPayload;
 import samplebatis.model.school.SchoolsPayload;
-import samplebatis.model.student.Student;
-import samplebatis.model.student.StudentPayload;
-import samplebatis.model.student.StudentsPayload;
 import samplebatis.service.SchoolService;
 
 @RestController
@@ -46,7 +44,7 @@ public class SchoolController {
     }
 
     @GetMapping
-    public SchoolsPayload list() {
-        return new SchoolsPayload(schoolService.list());
+    public SchoolsPayload list(SchoolFilter filter) {
+        return new SchoolsPayload(schoolService.list(filter));
     }
 }

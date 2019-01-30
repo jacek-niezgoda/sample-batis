@@ -34,8 +34,17 @@
         where school_id = #id#
     </delete>
 
-    <select id="list" resultClass="samplebatis.entity.SchoolEntity" resultMap="school">
+    <select id="list" resultClass="samplebatis.entity.SchoolEntity" resultMap="school" parameterClass="samplebatis.model.school.SchoolFilter">
         SELECT * FROM schools
+
+        <dynamic prepend="WHERE ">
+            <isNotEmpty prepend="AND" property="name">
+                school_name LIKE '%$name$%'
+            </isNotEmpty>
+            <isNotEmpty prepend="AND" property="level">
+                school_level = #level#
+            </isNotEmpty>
+        </dynamic>
     </select>
 
 </sqlMap>

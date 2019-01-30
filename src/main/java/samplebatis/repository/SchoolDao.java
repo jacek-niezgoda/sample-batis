@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Repository;
 import samplebatis.entity.SchoolEntity;
+import samplebatis.model.school.SchoolFilter;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class SchoolDao {
         return sqlMapClientTemplate.delete("School.delete", id);
     }
 
-    public List<SchoolEntity> list() {
-        return sqlMapClientTemplate.queryForList("School.list");
+    public List<SchoolEntity> list(SchoolFilter filter) {
+        return sqlMapClientTemplate.queryForList("School.list", filter);
     }
 }
