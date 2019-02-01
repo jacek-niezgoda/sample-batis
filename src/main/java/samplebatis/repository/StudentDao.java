@@ -5,6 +5,7 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import org.springframework.stereotype.Repository;
 import samplebatis.entity.StudentEntity;
+import samplebatis.model.student.StudentFilter;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class StudentDao {
         return sqlMapClientTemplate.delete("Student.delete", studentId);
     }
 
-    public List<StudentEntity> list() {
-        return sqlMapClientTemplate.queryForList("Student.list");
+    public List<StudentEntity> list(StudentFilter filter) {
+        return sqlMapClientTemplate.queryForList("Student.list", filter);
     }
 }

@@ -34,8 +34,17 @@
         where student_id = #studentId#
     </delete>
 
-    <select id="list" resultClass="samplebatis.entity.StudentEntity" resultMap="student">
+    <select id="list" resultClass="samplebatis.entity.StudentEntity" resultMap="student" parameterClass="samplebatis.model.student.StudentFilter">
         SELECT * FROM students
+
+        <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="firstName">
+                first_name LIKE '%$firstName$%'
+            </isNotEmpty>
+            <isNotEmpty prepend="AND" property="lastName">
+                last_name LIKE '%$lastName$%'
+            </isNotEmpty>
+        </dynamic>
     </select>
 
 </sqlMap>

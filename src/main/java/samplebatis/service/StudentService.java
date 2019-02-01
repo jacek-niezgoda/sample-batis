@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import samplebatis.factory.StudentFactory;
 import samplebatis.model.student.Student;
+import samplebatis.model.student.StudentFilter;
 import samplebatis.model.student.StudentPayload;
 import samplebatis.repository.StudentDao;
 
@@ -42,8 +43,8 @@ public class StudentService {
         studentDao.delete(studentId);
     }
 
-    public List<Student> list() {
-        return studentDao.list()
+    public List<Student> list(StudentFilter filter) {
+        return studentDao.list(filter)
                 .stream()
                 .map(studentFactory::studentOf)
                 .collect(Collectors.toList());

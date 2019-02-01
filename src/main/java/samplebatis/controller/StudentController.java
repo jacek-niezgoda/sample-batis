@@ -3,6 +3,7 @@ package samplebatis.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import samplebatis.model.student.Student;
+import samplebatis.model.student.StudentFilter;
 import samplebatis.model.student.StudentPayload;
 import samplebatis.model.student.StudentsPayload;
 import samplebatis.service.StudentService;
@@ -43,8 +44,8 @@ public class StudentController {
     }
 
     @GetMapping
-    public StudentsPayload list() {
-        return new StudentsPayload(studentService.list());
+    public StudentsPayload list(StudentFilter filter) {
+        return new StudentsPayload(studentService.list(filter));
     }
 
 }

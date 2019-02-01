@@ -37,7 +37,7 @@
     <select id="list" resultClass="samplebatis.entity.SchoolEntity" resultMap="school" parameterClass="samplebatis.model.school.SchoolFilter">
         SELECT * FROM schools
 
-        <dynamic prepend="WHERE ">
+        <dynamic prepend="WHERE">
             <isNotEmpty prepend="AND" property="name">
                 school_name LIKE '%$name$%'
             </isNotEmpty>
